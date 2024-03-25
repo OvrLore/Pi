@@ -17,13 +17,15 @@ func preBmBc(_ x: [Character], _ m: Int, _ bmBc: inout [Int]) {
         bmBc[i] = m
     }
     for i in 0..<m - 1 {
-        bmBc[x[i].asciiValue!] = m - i - 1
+        bmBc[Int(x[i].asciiValue!)] = m - i - 1
     }
 }
 
 func suffixes(_ x: [Character], _ m: Int, _ suff: inout [Int]) {
+    var f = 0
     suff[m - 1] = m
     var g = m - 1
+    
     for i in (0..<m - 1).reversed() {
         if i > g && suff[i + m - 1 - f] < i - g {
             suff[i] = suff[i + m - 1 - f]
@@ -82,12 +84,9 @@ func BM(_ x: [Character], _ m: Int, _ y: [Character], _ n: Int) {
             j += bmGs[0]
         }
         else {
-            j += max(bmGs[i], bmBc[y[i + j]] - m + 1 + i)
+            j += max(bmGs[i], bmBc[Int(y[i + j].asciiValue!)] - m + 1 + i)
         }
     }
 }
 
-//Test the function
-let pattern = Array("abcx")
-let text = Array("aabcxabcdabxabcxx")
 

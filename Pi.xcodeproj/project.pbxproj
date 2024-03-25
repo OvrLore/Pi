@@ -11,6 +11,10 @@
 		4C2A4E502BB0D16700167F00 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A4E4F2BB0D16700167F00 /* ContentView.swift */; };
 		4C2A4E522BB0D16900167F00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A4E512BB0D16900167F00 /* Assets.xcassets */; };
 		4C2A4E552BB0D16900167F00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A4E542BB0D16900167F00 /* Preview Assets.xcassets */; };
+		4C2A4E602BB0D7F800167F00 /* Pi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A4E5F2BB0D7F800167F00 /* Pi.swift */; };
+		4C2A4E662BB0ECA600167F00 /* pi1M.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A4E652BB0ECA600167F00 /* pi1M.rtf */; };
+		4C2A4E682BB1BB3200167F00 /* BoyerMooreAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A4E672BB1BB3200167F00 /* BoyerMooreAlgorithm.swift */; };
+		4C2A4E6A2BB1C2F000167F00 /* Boyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A4E692BB1C2F000167F00 /* Boyer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		4C2A4E4F2BB0D16700167F00 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4C2A4E512BB0D16900167F00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C2A4E542BB0D16900167F00 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4C2A4E5F2BB0D7F800167F00 /* Pi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pi.swift; sourceTree = "<group>"; };
+		4C2A4E652BB0ECA600167F00 /* pi1M.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = pi1M.rtf; sourceTree = "<group>"; };
+		4C2A4E672BB1BB3200167F00 /* BoyerMooreAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoyerMooreAlgorithm.swift; sourceTree = "<group>"; };
+		4C2A4E692BB1C2F000167F00 /* Boyer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boyer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,10 @@
 			children = (
 				4C2A4E4D2BB0D16700167F00 /* PiApp.swift */,
 				4C2A4E4F2BB0D16700167F00 /* ContentView.swift */,
+				4C2A4E5F2BB0D7F800167F00 /* Pi.swift */,
+				4C2A4E672BB1BB3200167F00 /* BoyerMooreAlgorithm.swift */,
+				4C2A4E692BB1C2F000167F00 /* Boyer.swift */,
+				4C2A4E652BB0ECA600167F00 /* pi1M.rtf */,
 				4C2A4E512BB0D16900167F00 /* Assets.xcassets */,
 				4C2A4E532BB0D16900167F00 /* Preview Content */,
 			);
@@ -126,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C2A4E552BB0D16900167F00 /* Preview Assets.xcassets in Resources */,
+				4C2A4E662BB0ECA600167F00 /* pi1M.rtf in Resources */,
 				4C2A4E522BB0D16900167F00 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +152,9 @@
 			files = (
 				4C2A4E502BB0D16700167F00 /* ContentView.swift in Sources */,
 				4C2A4E4E2BB0D16700167F00 /* PiApp.swift in Sources */,
+				4C2A4E6A2BB1C2F000167F00 /* Boyer.swift in Sources */,
+				4C2A4E682BB1BB3200167F00 /* BoyerMooreAlgorithm.swift in Sources */,
+				4C2A4E602BB0D7F800167F00 /* Pi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
