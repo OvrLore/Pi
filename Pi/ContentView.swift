@@ -11,7 +11,8 @@ struct ContentView: View {
     @State var indice = 0
     @State var indice2 = ""
     @State var searchString = ""
-    
+    @State var ms = 0
+    @State var ms2 = 0
     
     let pi1M: String = {
         if let path = Bundle.main.path(forResource: "pi1M", ofType: "rtf") {
@@ -24,9 +25,27 @@ struct ContentView: View {
         }
         return ""
     }()
-    
+    /*
+    let pi50M: [Int8] = {
+        if let path = Bundle.main.path(forResource: "pi50.4", ofType: "bin") {
+            do {
+                // Read binary data from the file
+                let data = try Data(contentsOf: URL(fileURLWithPath: path))
+
+                // Process the binary data into an array of Int8
+                var piDigits = [Int8](repeating: 0, count: data.count)
+                data.copyBytes(to: &piDigits, count: data.count)
+
+                return piDigits
+            } catch {
+                print("Failed to load file:", error)
+            }
+        }
+        return []
+    }()
+    */
     var body: some View {
-        VStack(spacing: 50) {
+        VStack(spacing: 20) {
             Text("Pi Searcher")
                 .font(.title)
                 .bold()
@@ -36,10 +55,26 @@ struct ContentView: View {
                 .padding()
                 .keyboardType(.numberPad)
             
+            
+            
+            Text("Brute force algorithm result: \(indice)")
+            Text("ms: \(ms)")
+            Text("Booyer Moore algorithm result: \(indice2)")
+            Text("ms: \(ms2)")
+            
             Button(action: {
-                indice = indexOf(txt: pi1M, search: searchString)
-                //BM(Array(pi1M), pi1M.count, Array(searchString), //searchString.count)
-                indice2 = String(pi1M.distance(from: pi1M.startIndex, to: pi1M.index(of: searchString)!))
+                ms = executionTime {
+                    indice = indexOf(txt: pi1M, search: searchString)
+                }
+                /*
+                msInt8 = executionTime {
+                    indiceInt8 = indexInt8(of: pi50M)!
+                }
+                */
+                
+                ms2 = executionTime {
+                    indice2 = String(pi1M.distance(from: pi1M.startIndex, to: pi1M.index(of: searchString)!))
+                }
                // print(pi1M.index(of: "2345")!)
                 //indice2 = pi1M.index(of: "\(searchString)")!
             }) {
@@ -51,17 +86,29 @@ struct ContentView: View {
                     .background(Color.blue)
                     .cornerRadius(25)
             }
-            
-            Text("Number found at index:")
-            Text("\(indice)")
-            Text("\(indice2)")
         }
+        
         .padding()
     }
     
 }
+/*
+func readPiDigits(from fileURL: URL) -> [Int8]? {
+    do {
+        // Open the binary file
+        let data = try Data(contentsOf: fileURL)
 
+        // Process the binary data
+        // Assuming each digit is stored as a single byte in the binary file
+        let piDigits = data.map { Int8($0) }
 
+        return piDigits
+    } catch {
+        print("Error reading binary file:", error)
+        return nil
+    }
+}
+*/
 
 func indexOf(txt: String, search: String) -> Int {
     let start = search.first!
@@ -84,6 +131,7 @@ func indexOf(txt: String, search: String) -> Int {
     }
     return -1
 }
+    
 /*
  extension String {
  func boyerMooreSearch(for pattern: String) -> [Int] {

@@ -6,7 +6,57 @@
   This code is based on the article "Faster String Searches" by Costas Menico
   from Dr Dobb's magazine, July 1989.
   http://www.drdobbs.com/database/faster-string-searches/184408171
+
+import Foundation
+
+extension Array where Element == Int8 {
+    func indexInt8(of pattern: [Int8], usingHorspoolImprovement: Bool = false) -> Int? {
+        let patternLength = pattern.count
+        guard patternLength > 0, patternLength <= self.count else { return nil }
+
+        var skipTable = [Int8: Int]()
+        for (i, value) in pattern.enumerated() {
+            skipTable[value] = patternLength - i - 1
+        }
+
+        let lastChar = pattern[patternLength - 1]
+
+        var i = patternLength - 1
+
+        func backwards() -> Int? {
+            var q = patternLength - 1
+            var j = i
+            while q > 0 {
+                j -= 1
+                q -= 1
+                if self[j] != pattern[q] { return nil }
+            }
+            return j
+        }
+
+        while i < self.count {
+            let c = self[i]
+
+            if c == lastChar {
+                if let k = backwards() { return k }
+
+                if !usingHorspoolImprovement {
+                    i += 1
+                } else {
+                    let jumpOffset = Swift.max(skipTable[c] ?? patternLength, 1)
+                    i += jumpOffset
+                }
+            } else {
+                i += skipTable[c] ?? patternLength
+            }
+        }
+        return nil
+    }
+//}
+
 */
+import Foundation
+
 extension String {
     func index(of pattern: String, usingHorspoolImprovement: Bool = false) -> Index? {
         // Cache the length of the search pattern because we're going to
@@ -73,6 +123,28 @@ extension String {
             }
         }
         return nil
+    }
+}
+
+func measureElapsedTime(_ operation: () throws -> Void) throws -> UInt64 {
+    let startTime = DispatchTime.now()
+    try operation()
+    let endTime = DispatchTime.now()
+
+    let elapsedTime = endTime.uptimeNanoseconds - startTime.uptimeNanoseconds
+    let elapsedTimeInMilliSeconds = Double(elapsedTime) / 1_000_000.0
+
+    return UInt64(elapsedTimeInMilliSeconds)
+}
+
+func executionTime(operation: () throws -> Void) -> Int {
+    do {
+        let executionTime = try measureElapsedTime(operation)
+        print("Execution time: \(executionTime) ms")
+        return Int(executionTime)
+    } catch {
+        print("An error occurred: \(error)")
+        return -1
     }
 }
 

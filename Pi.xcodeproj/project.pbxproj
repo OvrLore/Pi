@@ -15,6 +15,7 @@
 		4C2A4E662BB0ECA600167F00 /* pi1M.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A4E652BB0ECA600167F00 /* pi1M.rtf */; };
 		4C2A4E682BB1BB3200167F00 /* BoyerMooreAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A4E672BB1BB3200167F00 /* BoyerMooreAlgorithm.swift */; };
 		4C2A4E6A2BB1C2F000167F00 /* Boyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A4E692BB1C2F000167F00 /* Boyer.swift */; };
+		4C2A4E6C2BB2357600167F00 /* pi50.4.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A4E6B2BB2357600167F00 /* pi50.4.bin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		4C2A4E652BB0ECA600167F00 /* pi1M.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = pi1M.rtf; sourceTree = "<group>"; };
 		4C2A4E672BB1BB3200167F00 /* BoyerMooreAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoyerMooreAlgorithm.swift; sourceTree = "<group>"; };
 		4C2A4E692BB1C2F000167F00 /* Boyer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boyer.swift; sourceTree = "<group>"; };
+		4C2A4E6B2BB2357600167F00 /* pi50.4.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = pi50.4.bin; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				4C2A4E672BB1BB3200167F00 /* BoyerMooreAlgorithm.swift */,
 				4C2A4E692BB1C2F000167F00 /* Boyer.swift */,
 				4C2A4E652BB0ECA600167F00 /* pi1M.rtf */,
+				4C2A4E6B2BB2357600167F00 /* pi50.4.bin */,
 				4C2A4E512BB0D16900167F00 /* Assets.xcassets */,
 				4C2A4E532BB0D16900167F00 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C2A4E552BB0D16900167F00 /* Preview Assets.xcassets in Resources */,
+				4C2A4E6C2BB2357600167F00 /* pi50.4.bin in Resources */,
 				4C2A4E662BB0ECA600167F00 /* pi1M.rtf in Resources */,
 				4C2A4E522BB0D16900167F00 /* Assets.xcassets in Resources */,
 			);
