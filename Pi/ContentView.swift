@@ -15,7 +15,7 @@ struct ContentView: View {
     @State var ms2 = 0
     
     let pi1M: String = {
-        if let path = Bundle.main.path(forResource: "pi1M", ofType: "rtf") {
+        if let path = Bundle.main.path(forResource: "pi50M", ofType: "txt") {
             do {
                 let attributedString = try NSAttributedString(url: URL(fileURLWithPath: path), options: [:], documentAttributes: nil)
                 return attributedString.string
@@ -25,25 +25,7 @@ struct ContentView: View {
         }
         return ""
     }()
-    /*
-    let pi50M: [Int8] = {
-        if let path = Bundle.main.path(forResource: "pi50.4", ofType: "bin") {
-            do {
-                // Read binary data from the file
-                let data = try Data(contentsOf: URL(fileURLWithPath: path))
-
-                // Process the binary data into an array of Int8
-                var piDigits = [Int8](repeating: 0, count: data.count)
-                data.copyBytes(to: &piDigits, count: data.count)
-
-                return piDigits
-            } catch {
-                print("Failed to load file:", error)
-            }
-        }
-        return []
-    }()
-    */
+   
     var body: some View {
         VStack(spacing: 20) {
             Text("Pi Searcher")
@@ -57,20 +39,18 @@ struct ContentView: View {
             
             
             
-            Text("Brute force algorithm result: \(indice)")
-            Text("ms: \(ms)")
+            //Text("Brute force algorithm result: \(indice)")
+            //Text("ms: \(ms)")
             Text("Booyer Moore algorithm result: \(indice2)")
             Text("ms: \(ms2)")
             
             Button(action: {
+                /*
                 ms = executionTime {
                     indice = indexOf(txt: pi1M, search: searchString)
+                    //indice = indexOfCompressed(search: searchString)
                 }
-                /*
-                msInt8 = executionTime {
-                    indiceInt8 = indexInt8(of: pi50M)!
-                }
-                */
+               */
                 
                 ms2 = executionTime {
                     indice2 = String(pi1M.distance(from: pi1M.startIndex, to: pi1M.index(of: searchString)!))
@@ -86,29 +66,31 @@ struct ContentView: View {
                     .background(Color.blue)
                     .cornerRadius(25)
             }
+            
         }
         
         .padding()
     }
     
 }
-/*
-func readPiDigits(from fileURL: URL) -> [Int8]? {
+
+func writePiDataToFile() {
+    let fileURL = URL(fileURLWithPath: "/Users/lorenzoovera/Documents/Pi/Pi/pi50.4.bin")
+    
+    guard let fileData = try? Data(contentsOf: fileURL) else {
+        print("Could not read pi file")
+        return
+    }
+    
+    let destinationURL = URL(fileURLWithPath: "/Users/lorenzoovera/Documents/FilePi/pi50M.dat")
+    
     do {
-        // Open the binary file
-        let data = try Data(contentsOf: fileURL)
-
-        // Process the binary data
-        // Assuming each digit is stored as a single byte in the binary file
-        let piDigits = data.map { Int8($0) }
-
-        return piDigits
+        try fileData.write(to: destinationURL)
+        print("Data successfully written to \(destinationURL)")
     } catch {
-        print("Error reading binary file:", error)
-        return nil
+        print("Error writing data: \(error)")
     }
 }
-*/
 
 func indexOf(txt: String, search: String) -> Int {
     let start = search.first!
@@ -130,6 +112,99 @@ func indexOf(txt: String, search: String) -> Int {
         }
     }
     return -1
+}
+
+func indexOfCompressed(search: String) -> Int {
+        // Load the compressed file
+        //if let compressedURL = Bundle.main.url(forResource: "compressed_numbers", withExtension: "dat") {
+    if let compressedURL = Bundle.main.url(forResource: "pi50M", withExtension: "dat") {
+            do {
+                let compressedData = try Data(contentsOf: compressedURL)
+                
+                // Process the compressed data
+                var compressedNumbers = [Int]()
+                for byte in compressedData {
+                    let num1 = Int(byte >> 4)
+                    let num2 = Int(byte & 0b00001111)
+                    compressedNumbers.append(num1)
+                    compressedNumbers.append(num2)
+                }
+                
+                // Convert to string for searching
+                let compressedString = compressedNumbers.map { String($0) }.joined()
+                
+                // Perform the search
+                if let range = compressedString.range(of: search) {
+                    return range.lowerBound.utf16Offset(in: compressedString)
+                }
+            } catch {
+                print("Error loading compressed file:", error)
+            }
+        }
+        
+        // Return -1 if not found or error occurred
+        return -1
+    }
+
+func saveAndReadCompressedNumbers(input: String) {
+    let numbers = input.map { Int(String($0)) ?? 0 }
+    
+
+    var compressedNumbers: [UInt8] = []
+    for i in stride(from: 0, to: numbers.count, by: 2) {
+        let num1 = UInt8(numbers[i])
+        let num2 = UInt8(numbers[i + 1])
+        let compressedNumber = (num1 << 4) | num2
+        compressedNumbers.append(compressedNumber)
+    }
+    
+
+    let compressedData = Data(compressedNumbers)
+    
+/*
+    let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("compressed_numbers.dat")
+*/
+    let fileURL = URL(fileURLWithPath: "/Users/lorenzoovera/Documents/FilePi/pi50M.dat")
+
+    do {
+        try compressedData.write(to: fileURL)
+        print("Compressed numbers saved successfully at \(fileURL).")
+        
+
+        if let restoredNumbers = readCompressedNumbers(from: fileURL) {
+
+            var originalNumbers: [Int] = []
+            for number in restoredNumbers {
+                let num1 = Int(number >> 4)
+                let num2 = Int(number & 0b00001111)
+                originalNumbers.append(num1)
+                originalNumbers.append(num2)
+            }
+            
+            // Print the original and restored numbers
+            //print("Original numbers:", numbers)
+            print("Restored numbers:", originalNumbers)
+        } else {
+            print("Error reading compressed numbers from the file.")
+        }
+    } catch {
+        print("Error saving compressed numbers:", error)
+    }
+}
+
+func readCompressedNumbers(from fileURL: URL) -> [UInt8]? {
+    do {
+        // Read the compressed data from the file
+        let restoredData = try Data(contentsOf: fileURL)
+        
+        // Convert the restored data back to the compressed numbers
+        let restoredNumbers = Array(restoredData)
+        
+        return restoredNumbers
+    } catch {
+        print("Error reading compressed numbers:", error)
+        return nil
+    }
 }
     
 /*
@@ -186,6 +261,25 @@ func indexOf(txt: String, search: String) -> Int {
  
  
  */
+
+
+func convertDatToTxt(datFilePath: String, txtFilePath: String) {
+    // Read data from .dat file as raw bytes
+    if let data = FileManager.default.contents(atPath: datFilePath) {
+        // Write the raw data to a new .txt file
+        do {
+            try data.write(to: URL(fileURLWithPath: txtFilePath))
+            print("Conversion completed successfully.")
+        } catch {
+            print("Error writing to file:", error.localizedDescription)
+        }
+    } else {
+        print("Failed to read data from .dat file.")
+    }
+}
+
+
+
 #Preview {
     ContentView()
 }
