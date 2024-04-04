@@ -41,7 +41,7 @@ struct ContentView: View {
             
             //Text("Brute force algorithm result: \(indice)")
             //Text("ms: \(ms)")
-            Text("Booyer Moore algorithm result: \(indice2)")
+            Text("Your number is at the index: \(indice2)")
             Text("ms: \(ms2)")
             
             Button(action: {
