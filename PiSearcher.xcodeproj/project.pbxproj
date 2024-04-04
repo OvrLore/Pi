@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C2A4E4A2BB0D16700167F00 /* Pi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C2A4E4A2BB0D16700167F00 /* PiSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PiSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2A4E4D2BB0D16700167F00 /* PiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiApp.swift; sourceTree = "<group>"; };
 		4C2A4E4F2BB0D16700167F00 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4C2A4E512BB0D16900167F00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		4C2A4E4B2BB0D16700167F00 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C2A4E4A2BB0D16700167F00 /* Pi.app */,
+				4C2A4E4A2BB0D16700167F00 /* PiSearcher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,9 +88,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C2A4E492BB0D16700167F00 /* Pi */ = {
+		4C2A4E492BB0D16700167F00 /* PiSearcher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C2A4E582BB0D16900167F00 /* Build configuration list for PBXNativeTarget "Pi" */;
+			buildConfigurationList = 4C2A4E582BB0D16900167F00 /* Build configuration list for PBXNativeTarget "PiSearcher" */;
 			buildPhases = (
 				4C2A4E462BB0D16700167F00 /* Sources */,
 				4C2A4E472BB0D16700167F00 /* Frameworks */,
@@ -100,9 +100,9 @@
 			);
 			dependencies = (
 			);
-			name = Pi;
+			name = PiSearcher;
 			productName = Pi;
-			productReference = 4C2A4E4A2BB0D16700167F00 /* Pi.app */;
+			productReference = 4C2A4E4A2BB0D16700167F00 /* PiSearcher.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -120,7 +120,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4C2A4E452BB0D16700167F00 /* Build configuration list for PBXProject "Pi" */;
+			buildConfigurationList = 4C2A4E452BB0D16700167F00 /* Build configuration list for PBXProject "PiSearcher" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -133,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4C2A4E492BB0D16700167F00 /* Pi */,
+				4C2A4E492BB0D16700167F00 /* PiSearcher */,
 			);
 		};
 /* End PBXProject section */
@@ -349,7 +349,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C2A4E452BB0D16700167F00 /* Build configuration list for PBXProject "Pi" */ = {
+		4C2A4E452BB0D16700167F00 /* Build configuration list for PBXProject "PiSearcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C2A4E562BB0D16900167F00 /* Debug */,
@@ -358,7 +358,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C2A4E582BB0D16900167F00 /* Build configuration list for PBXNativeTarget "Pi" */ = {
+		4C2A4E582BB0D16900167F00 /* Build configuration list for PBXNativeTarget "PiSearcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C2A4E592BB0D16900167F00 /* Debug */,
