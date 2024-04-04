@@ -5,8 +5,12 @@ Welcome to the Pi Searcher GitHub repository! This Swift application utilizes th
 
 ## Features
 
+#### Customizable Input:
+Input _any numbers_ and let Pi Searcher find its first occurrence within the first _50 million_ digits of pi.
+
 #### Efficient Searching:
 Utilizes the _Boyer-Moore algorithm_ for fast and effective search operations within the extensive digits of pi.
+But let's see how the algorithm works:
 
 ```swift
  
@@ -77,10 +81,7 @@ func index(of pattern: String, usingHorspoolImprovement: Bool = false) -> Index?
         return nil
     }
 ```
-#### Customizable Input:
-Input _any numbers_ and let Pi Searcher find its first occurrence within the first _50 million_ digits of pi.
-#### Intuitive Interface: 
-_Simple_ and _user-friendly_ interface for seamless interaction and exploration. 
+
 ## How to Use
 
 Clone this repository to your local machine.
@@ -88,6 +89,7 @@ Open the project in Xcode or your preferred Swift development environment.
 Build and run the application.
 Input the number you want to search within the digits of pi.
 Hit the search button and let Pi Searcher do the rest!
+
 ## Contributing
 
 Contributions are welcome! Whether you want to add new features, improve existing functionality, or fix bugs, feel free to submit a pull request. For major changes, please open an issue first to discuss the proposed changes.
@@ -96,9 +98,6 @@ Contributions are welcome! Whether you want to add new features, improve existin
 
 This application was developed by Lorenzo Overa as a project to explore algorithms and data structures.
 Special thanks to all the people that helped me and to the creators of the Boyer-Moore algorithm for providing an efficient solution to string searching.
-## License
-
-This project is licensed under the MIT License.
 
 ## Contact
 
